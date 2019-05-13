@@ -5,13 +5,11 @@ const {
   ipcMain,
   Tray,
   globalShortcut,
-  clipboard,
-  Menu,
-  MenuItem
+  clipboard
 } = require('electron')
 const path = require('path')
 
-const assetsDirectory = path.join(__dirname, 'img')
+const assetsDirectory = path.join(__dirname, 'assets')
 
 let tray = undefined
 let translationWindows = [{
@@ -53,16 +51,6 @@ app.on('ready', () => {
     toggleWindow()
   })
 
-  const menu = new Menu()
-
-  menu.append(new MenuItem({
-    label: 'Print',
-    accelerator: 'CmdOrCtrl+P',
-    click: () => {
-      console.log('time to print stuff')
-    }
-  }))
-
 })
 
 ipcMain.on('controls-set-active-windows', (event, id) => {
@@ -77,7 +65,10 @@ app.on('window-all-closed', () => {
 
 // Creates tray image & toggles window on click
 const createTray = () => {
-  tray = new Tray(path.join(assetsDirectory, 'icon.png'))
+  tray = new Tray(path.join(assetsDirectory, 'icons/icon.png'))
+  tray.addListener('click', () => {
+    toggleWindow()
+  })
 }
 
 const getWindowPosition = (window) => {
@@ -122,15 +113,13 @@ const createWindow = () => {
       alwaysOnTop: true,
       webPreferences: {
         nodeIntegration: false,
-        contextIsolation:true
+        contextIsolation: true
       }
     })
 
     window.browserWindow.loadURL(window.url)
   });
 
-
-  // This is where the index.html file is loaded into the window
 
   controlsWindow.loadFile('controls.html')
   // window.webContents.openDevTools();
