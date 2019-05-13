@@ -1,13 +1,12 @@
 {
   "name": "ultimate-translator",
   "productName" : "ultimate-translator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A translation tool that lifes in the tray",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-mac": "node node_modules/electron-packager/cli.js . --overwrite --platform=darwin --arch=x64 --prune=true --out=dist",
-    "package-mac-icon": "node node_modules/electron-packager/cli.js . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds"
+    "package-mac": "node node_modules/electron-packager/cli.js . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=dist"
   },
   "repository": "https://github.com/sandro-id/ultimate-translator",
   "keywords": [

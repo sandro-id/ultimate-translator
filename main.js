@@ -33,7 +33,7 @@ let activeWindowID = translationWindows[0].id
 
 
 // Don't show the app in the doc
-app.dock.hide()
+// app.dock.hide()
 
 // Creates tray & window
 app.on('ready', () => {
@@ -96,11 +96,12 @@ const createWindow = () => {
     frame: false,
     fullscreenable: false,
     resizable: false,
+    icon: path.join(assetsDirectory, 'icons/icon.png'),
     webPreferences: {
       nodeIntegration: true
     }
   })
-
+  
   translationWindows.forEach(window => {
     window.browserWindow = new BrowserWindow({
       width: 720,
@@ -111,6 +112,7 @@ const createWindow = () => {
       resizable: false,
       hasShadow: false,
       alwaysOnTop: true,
+      icon: path.join(assetsDirectory, 'icons/icon.png'),
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true
