@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Controls</title>
+</head>
+<style>
+  body {
+    margin: 20px 0 0;
+    border-top: solid 2px darkgray;
+  }
+
+  ul {
+    -webkit-app-region: no-drag;
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    float: left;
+  }
+
+  button {
+    border: 0;
+    box-shadow: none;
+    padding: 6px 25px;
+    font-size: 14px;
+    margin-right: 1px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  button.active {
+    color: darkblue;
+  }
+
+  button:hover {
+    color: cornflowerblue;
+  }
+</style>
+
+<body>
+  <ul id="controls">
+    <li><button id="deepl">Deepl</button></li>
+    <li><button id="google">Google</button></li>
+    <li><button id="linguee">Linguee</button></li>
+  </ul>
+  <script>
+    require('./renderer.js')
+  </script>
+
+</body>
+
+</html>
