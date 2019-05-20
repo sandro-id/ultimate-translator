@@ -6,7 +6,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-mac": "node node_modules/electron-packager/cli.js . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=dist"
+    "package-mac": "node node_modules/electron-packager/cli.js . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=dist",
+    "package-win": "node node_modules/electron-packager/cli.js . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=dist",
+    "package-linux": "node node_modules/electron-packager/cli.js . --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/1024x1024.png --prune=true --out=dist"
   },
   "repository": "https://github.com/sandro-id/ultimate-translator",
   "keywords": [
@@ -15,7 +17,7 @@
   "author": "Alessandro Scalisi",
   "license": "MIT License",
   "devDependencies": {
-    "electron": "5.0.0",
+    "electron": "5.0.1",
     "electron-packager": "^13.1.1"
   }
 }
