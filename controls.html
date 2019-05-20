@@ -11,6 +11,11 @@
     border-top: solid 2px darkgray;
   }
 
+  .wrapper {
+    display: flex;
+    align-self: center;
+  }
+
   ul {
     -webkit-app-region: no-drag;
     display: inline-block;
@@ -40,14 +45,27 @@
   button:hover {
     color: cornflowerblue;
   }
+
+  #translate_input {
+    width: 200px;
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  #translate_input:focus {
+    outline: 0;
+  }  
 </style>
 
 <body>
-  <ul id="controls">
-    <li><button id="deepl">Deepl</button></li>
-    <li><button id="google">Google</button></li>
-    <li><button id="linguee">Linguee</button></li>
-  </ul>
+  <div class="wrapper">
+    <ul id="controls">
+      <li><button id="deepl">Deepl</button></li>
+      <li><button id="google">Google</button></li>
+      <li><button id="linguee">Linguee</button></li>
+    </ul>
+    <input type="text" id="translate_input">
+  </div>
   <script>
     require('./renderer.js')
   </script>

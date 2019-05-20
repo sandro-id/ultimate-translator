@@ -13,3 +13,15 @@ controlButtons.forEach((button) => {
         ipcRenderer.send('controls-set-active-windows', event.currentTarget.id)
     })
 })
+
+const translateInput = document.getElementById('translate_input')
+translateInput.addEventListener('change', (event) => {
+    ipcRenderer.send('controls-input-change', translateInput.value)
+})
+
+ipcRenderer.on('focus-input', (event, value) => {
+    translateInput.focus()
+    if (value) {
+        translateInput.value = value
+    }
+})

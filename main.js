@@ -49,6 +49,7 @@ app.on('ready', () => {
       window.browserWindow.loadURL(window.clipboardUrl.replace('###clipboard###', clipboard.readText()))
     })
     toggleWindow()
+    controlsWindow.webContents.send('focus-input', clipboard.readText());
   })
 
 })
@@ -58,6 +59,12 @@ app.dock.hide();
 ipcMain.on('controls-set-active-windows', (event, id) => {
   activeWindowID = id
   showWindow()
+})
+
+ipcMain.on('controls-input-change', (event, value) => {
+  translationWindows.forEach(window => {
+    window.browserWindow.loadURL(window.clipboardUrl.replace('###clipboard###', value))
+  })
 })
 
 // Quit the app when the window is closed
@@ -159,10 +166,11 @@ const showWindow = () => {
       windowBounds = window.browserWindow.getBounds()
       window.browserWindow.setPosition(position.x, position.y, false)
       window.browserWindow.show()
-      window.browserWindow.focus()
     }
   })
 
   controlsWindow.setPosition(position.x, position.y + windowBounds.height - 20, false)
   controlsWindow.show()
+  controlsWindow.focus()
+  controlsWindow.webContents.send('focus-input');
 }
