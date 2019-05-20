@@ -67,7 +67,7 @@ app.on('window-all-closed', () => {
 
 // Creates tray image & toggles window on click
 const createTray = () => {
-  tray = new Tray(path.join(assetsDirectory, 'icons/icon.png'))
+  tray = new Tray(path.join(assetsDirectory, 'icons/iconTemplate.png'))
   tray.addListener('click', () => {
     toggleWindow()
   })
