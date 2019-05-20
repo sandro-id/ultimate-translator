@@ -53,6 +53,8 @@ app.on('ready', () => {
 
 })
 
+app.dock.hide();
+
 ipcMain.on('controls-set-active-windows', (event, id) => {
   activeWindowID = id
   showWindow()
@@ -96,11 +98,14 @@ const createWindow = () => {
     frame: false,
     fullscreenable: false,
     resizable: false,
+    alwaysOnTop: true,
     icon: path.join(assetsDirectory, 'icons/icon.png'),
     webPreferences: {
       nodeIntegration: true
     }
   })
+
+  controlsWindow.setMenuBarVisibility(false)
   
   translationWindows.forEach(window => {
     window.browserWindow = new BrowserWindow({
